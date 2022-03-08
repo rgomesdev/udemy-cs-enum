@@ -35,6 +35,18 @@ namespace Ex_contractWorker.Entities
         {
             Contracts.Remove(contract);
         }
+        public double TotalIncome(int year, int month)
+        {
+            double sum = BaseSalary;
+            foreach(HourContract contract in Contracts)
+            {
+                if (contract.Date.Year == year && contract.Date.Month == month)
+                {
+                    sum += contract.TotalValue();
+                }
+            }
+            return sum;
+        }
 
     }
 }
